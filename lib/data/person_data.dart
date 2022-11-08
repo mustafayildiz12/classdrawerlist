@@ -25,7 +25,7 @@ List<Person> person = [
     suranme: "Şerif",
     lesson: "Türkçe",
     subject: "Yazım yanlışları",
-    branch: "LGS",
+    branch: "YKS",
     goal: "Tıp Fakültesi",
   ),
   Person(

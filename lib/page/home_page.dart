@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:denemelist/data/person_data.dart';
 import 'package:denemelist/widget/personlistcard.dart';
 import 'package:flutter/material.dart';
@@ -16,33 +14,43 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("ABC dershanesi"),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            ListTile(
-              title: const Text('KPSS SINIFI'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: const Text('YKS SINIFI'),
-              onTap: () {},
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("ABC dershanesi"),
         ),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              ListTile(
+                title: const Text('KPSS SINIFI'),
+                onTap: () {
+                  var myNewKpssList =
+                      myPersonList.where((element) => element.branch == 'KPSS');
+                  print(myNewKpssList.length);
+                },
+              ),
+              ListTile(
+                title: const Text('YKS SINIFI'),
+                onTap: () {
+                  var myNewYksList =
+                      myPersonList.where((element) => element.branch == 'YKS');
+                  print(myNewYksList.length);
+                },
+              ),
+            ],
+          ),
+        ),
+        body: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            itemCount: myPersonList.length,
+            itemBuilder: (context, index) => GestureDetector(
+                  onTap: (() {}),
+                  child: PersonListCard(person: myPersonList[index]),
+                )),
       ),
-      body: ListView.builder(
-          physics: BouncingScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          itemCount: person.length,
-          itemBuilder: (context, index) => GestureDetector(
-                onTap: (() {}),
-                child: PersonListCard(person: person[index]),
-              )),
     );
   }
 }

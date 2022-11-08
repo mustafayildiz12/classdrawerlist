@@ -1,6 +1,6 @@
 import 'package:denemelist/data_parameter/person_parameter.dart';
 
-List<Person> person = [
+List<Person> myPersonList = [
   Person(
     id: 1,
     name: "Mehtap",
